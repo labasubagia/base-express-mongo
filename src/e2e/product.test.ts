@@ -5,7 +5,7 @@ import app from '../loaders/app';
 import { initMongo } from '../loaders/mongo';
 import ProductModel, { Product } from '../models/product';
 
-describe('[e2e] Test user route', () => {
+describe('[e2e] Test product route', () => {
   beforeAll(async () => {
     await initMongo('db_e2e_product');
   });
