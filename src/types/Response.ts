@@ -1,4 +1,4 @@
-import { Document } from 'mongoose';
+import { ModelDocument } from './Model';
 
 export interface BaseResponse<T> {
   success: boolean;
@@ -13,4 +13,4 @@ export interface ErrorResponse<T> {
   };
 }
 
-export type ModelResponse<T> = (T & Document<unknown>) | null;
+export type ModelResponse<T> = ModelDocument<T> | null;

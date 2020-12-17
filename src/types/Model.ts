@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
 export interface Timestamps {
   created_at?: string;
@@ -9,3 +9,5 @@ export interface Timestamps {
 export interface BaseModelFields extends Timestamps {
   _id?: mongoose.Types.ObjectId;
 }
+
+export type ModelDocument<T> = T & Document;
