@@ -9,7 +9,7 @@ export interface Product extends BaseModelFields {
 
 const fields: Record<
   keyof Omit<Product, keyof BaseModelFields>,
-  SchemaTypeOpts<any>
+  SchemaTypeOpts<unknown>
 > = {
   name: { type: String, required: true, trim: true },
   quantity: { type: Number, default: 0 },
