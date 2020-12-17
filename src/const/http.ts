@@ -1,0 +1,4 @@
+export const HTTP_CODE_SUCCESS = 200;
+export const HTTP_CODE_SUCCESS_INSERT = 201;
+export const HTTP_CODE_ERROR_VALIDATION = 422;
+export const HTTP_CODE_ERROR_NOT_FOUND = 404;
