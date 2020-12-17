@@ -20,8 +20,10 @@ export default class ProductController {
       },
       quantity: {
         isInt: {
-          errorMessage: 'Quantity must be integer',
+          errorMessage: 'Quantity must be integer and minimal 0',
+          options: { min: 0 },
         },
+        optional: true,
         toInt: true,
       },
     })

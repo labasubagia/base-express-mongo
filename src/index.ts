@@ -1,5 +1,5 @@
-import initApp from './loaders/app';
-import initMongo from './loaders/mongo';
+import { initApp } from './loaders/app';
+import { initMongo } from './loaders/mongo';
 
 (async (): Promise<void> => {
   try {
