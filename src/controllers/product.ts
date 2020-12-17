@@ -9,6 +9,8 @@ import {
   PAGINATION_DEFAULT_PAGE_SIZE,
   PAGINATION_DEFAULT_PAGE,
 } from '../const/pagination';
+import { PaginationData } from '../types/Pagination';
+import { ModelDocument } from '../types/Model';
 
 export default class ProductController {
   public static validateOnCreate = ValidationHelper.validate(
@@ -66,7 +68,9 @@ export default class ProductController {
     const pageSize =
       Number(req.query?.page_size) || PAGINATION_DEFAULT_PAGE_SIZE;
     const page = Number(req.query?.page) || PAGINATION_DEFAULT_PAGE;
-    const data: BaseResponse<ModelResponse<Product>[]> = {
+    const data: BaseResponse<
+      PaginationData<ModelDocument<Product> | unknown>
+    > = {
       success: true,
       messages: [],
       meta: [],

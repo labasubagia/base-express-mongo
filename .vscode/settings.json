@@ -6,6 +6,7 @@
         "Subagia",
         "automock",
         "camelcase",
+        "cond",
         "lcov",
         "respawn",
         "unmocked"

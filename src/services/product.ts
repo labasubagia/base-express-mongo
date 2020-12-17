@@ -1,7 +1,7 @@
 import PaginationHelper from '../helpers/pagination';
 import ProductModel, { Product } from '../models/product';
 import { ModelDocument } from '../types/Model';
-import { PaginationParams } from '../types/Pagination';
+import { PaginationData, PaginationParams } from '../types/Pagination';
 
 export default class ProductService {
   public static async create(payload: Product) {
@@ -9,11 +9,12 @@ export default class ProductService {
     return result;
   }
 
-  public static async getPaginate(payload: PaginationParams) {
-    const result = await ProductModel.aggregate<ModelDocument<Product>>([
-      { $skip: PaginationHelper.getSkip(payload.pageSize, payload.page) },
-      { $limit: payload.pageSize },
-    ]);
-    return result;
+  public static async getPaginate(
+    payload: PaginationParams
+  ): Promise<PaginationData<ModelDocument<Product> | unknown>> {
+    const paginated = await ProductModel.aggregate<
+      PaginationData<ModelDocument<Product>>
+    >([...PaginationHelper.getAggregateModifier(payload)]);
+    return paginated.length ? paginated[0] : PaginationHelper.getDefaultData();
   }
 }
