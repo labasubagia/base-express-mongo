@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
-import environment from '../config/environment';
+import EnvironmentConfig from '../config/environment';
 
 const initMongo = async () => {
-  await mongoose.connect(environment.databaseUrl, {
+  await mongoose.connect(EnvironmentConfig.databaseUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
