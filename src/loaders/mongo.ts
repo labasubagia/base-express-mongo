@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import mongoose from 'mongoose';
 import EnvironmentConfig from '../config/environment';
 
@@ -11,4 +10,8 @@ export const initMongo = async (dbName?: string) => {
   };
   if (!dbName) delete options.dbName;
   await mongoose.connect(EnvironmentConfig.databaseUrl, options);
+};
+
+export const closeMongo = async () => {
+  await mongoose.connection.close();
 };

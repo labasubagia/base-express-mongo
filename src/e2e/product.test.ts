@@ -1,8 +1,7 @@
-import mongoose from 'mongoose';
 import request from 'supertest';
 import faker from 'faker';
 import app from '../loaders/app';
-import { initMongo } from '../loaders/mongo';
+import { closeMongo, initMongo } from '../loaders/mongo';
 import ProductModel, { Product } from '../models/product';
 
 describe('[e2e] Test product route', () => {
@@ -15,7 +14,7 @@ describe('[e2e] Test product route', () => {
   });
 
   afterAll(async () => {
-    await mongoose.connection.close();
+    await closeMongo();
   });
 
   describe('product create', () => {
