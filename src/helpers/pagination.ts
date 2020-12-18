@@ -73,7 +73,8 @@ export default class PaginationHelper {
       current_page: payload.page,
       page_size: payload.pageSize,
       total: array.length,
-      last_page: array.length ? Math.ceil(array.length / payload.pageSize) : 0,
+      last_page:
+        payload.pageSize > 0 ? Math.ceil(array.length / payload.pageSize) : 0,
       items: array.slice(
         this.getSkip(payload),
         payload.pageSize * payload.page
