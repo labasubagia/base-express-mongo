@@ -5,9 +5,9 @@ export interface PaginationParams {
 }
 
 export interface PaginationData<T> {
-  current_page?: number;
+  current_page: number;
   items: T[];
-  last_page?: number;
-  page_size?: number;
+  last_page: number;
+  page_size: number;
   total: number;
 }

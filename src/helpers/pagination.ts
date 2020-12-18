@@ -5,10 +5,6 @@ import {
 import { PaginationData, PaginationParams } from '../types/Pagination';
 
 export default class PaginationHelper {
-  public static getSkip(payload: PaginationParams) {
-    return payload.pageSize * (payload.page - 1);
-  }
-
   public static getAggregateModifier(payload: PaginationParams) {
     return [
       {
@@ -67,5 +63,25 @@ export default class PaginationHelper {
       page_size: payload?.pageSize || PAGINATION_DEFAULT_PAGE_SIZE,
       last_page: 0,
     };
+  }
+
+  public static getPaginatedArray<T>(
+    array: T[],
+    payload: PaginationParams
+  ): PaginationData<T> {
+    return {
+      current_page: payload.page,
+      page_size: payload.pageSize,
+      total: array.length,
+      last_page: array.length ? Math.ceil(array.length / payload.pageSize) : 0,
+      items: array.slice(
+        this.getSkip(payload),
+        payload.pageSize * payload.page
+      ),
+    };
+  }
+
+  public static getSkip(payload: PaginationParams) {
+    return payload.pageSize * (payload.page - 1);
   }
 }
